@@ -1,9 +1,9 @@
 import { TextNotification } from "./components/TextNotification";
 
 const Info = {
-  from: '3122079227',
-  text: 'Test',
-  threadId: '123456789'
+  from: "3122079227",
+  text: "This is a message from your client about a loan",
+  threadId: "123456789"
 }
 
 function App() {
