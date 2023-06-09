@@ -16,14 +16,18 @@ interface Props {
 }
 
 export const TextNotification = (props: Props) => {
-  const { textMessage:{from, text, threadId}, sendReply, navigateToInboxThread } = props;
+  const {
+    textMessage: { from, text, threadId },
+    sendReply,
+    navigateToInboxThread,
+  } = props;
   return (
-    <Container>
+    <Container data-testid="textNotification-component">
       <SecondContainer>
-        <NavigateToThread onClick = {() => navigateToInboxThread(threadId)}/>
+        <NavigateToThread onClick={() => navigateToInboxThread(threadId)} />
         <div>
           <ShowInformation from={from} text={text} />
-          <MessageForm sendReplay={sendReply}/>
+          <MessageForm sendReplay={sendReply} />
         </div>
       </SecondContainer>
     </Container>

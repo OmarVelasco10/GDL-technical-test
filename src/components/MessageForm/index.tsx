@@ -1,18 +1,17 @@
 import { createRef } from "react";
-import { Button, Container, TextareaInput } from './styled';
+import { Button, Container, TextareaInput } from "./styled";
 
 interface Props {
-  sendReplay: (text: string)=> void;
+  sendReplay: (text: string) => void;
 }
 
 const Component = (props: Props) => {
-  const messageRef = createRef< HTMLTextAreaElement>();
-  const {sendReplay} = props;
+  const messageRef = createRef<HTMLTextAreaElement>();
+  const { sendReplay } = props;
 
-  const handleOnClick = () =>{
-    if(messageRef?.current?.value === '') return;
-    sendReplay(messageRef?.current?.value || '');
-  }
+  const handleOnClick = () => {
+    sendReplay(messageRef?.current?.value || "");
+  };
   return (
     <Container data-testid="messageForm-component">
       <TextareaInput
@@ -20,8 +19,13 @@ const Component = (props: Props) => {
         cols={30}
         rows={10}
         placeholder="Your replay to be sent"
+        data-testid="textarea-component"
       ></TextareaInput>
-      <Button className="send-button" onClick={handleOnClick}>
+      <Button
+        className="send-button"
+        onClick={handleOnClick}
+        data-testid="green-button"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -34,9 +38,9 @@ const Component = (props: Props) => {
         </svg>{" "}
         Send Reply
       </Button>
-      </Container>
+    </Container>
   );
 };
 
-export { Component as MessageForm};
+export { Component as MessageForm };
 export default Component;

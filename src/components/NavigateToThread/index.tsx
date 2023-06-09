@@ -4,11 +4,11 @@ interface Props {
   onClick: () => void;
 }
 
-export const NavigateToThread = (props: Props) => {
+const Component = (props: Props) => {
   const { onClick } = props;
   return (
-    <div>
-      <Button onClick={onClick}>
+    <div data-testid="navigateToThread-component">
+      <Button onClick={onClick} data-testid="blue-button">
         <ContainerImage>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -26,3 +26,6 @@ export const NavigateToThread = (props: Props) => {
     </div>
   );
 };
+
+export { Component as NavigateToThread };
+export default Component;
