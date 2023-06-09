@@ -1,5 +1,5 @@
 import { NavigateToThread } from "./NavigateToThread";
-import { SendMessage } from "./SendMessage";
+import { MessageForm } from "./MessageForm";
 import { ShowInformation } from "./ShowInformation";
 
 type TextMessage = {
@@ -10,8 +10,8 @@ type TextMessage = {
 
 interface Props {
   textMessage: TextMessage;
-  sendReply?: (text: string) => {};
-  navigateToInboxThread?: (id: string) => {};
+  sendReply: (text: string) => void;
+  navigateToInboxThread: (id: string) => void;
 }
 
 export const TextNotification = (props: Props) => {
@@ -19,10 +19,10 @@ export const TextNotification = (props: Props) => {
   return (
     <div className="main-layout">
       <div className="second-layout">
-        <NavigateToThread />
+        <NavigateToThread onClick = {() => navigateToInboxThread(textMessage.threadId)}/>
         <div>
           <ShowInformation from={textMessage.from} text={textMessage.text} />
-          <SendMessage />
+          <MessageForm sendReplay={sendReply}/>
         </div>
       </div>
     </div>

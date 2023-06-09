@@ -1,9 +1,12 @@
-import React from "react";
+interface Props {
+  onClick: () => void;
+}
 
-export const NavigateToThread = () => {
+export const NavigateToThread = (props: Props) => {
+  const { onClick } = props;
   return (
     <div>
-      <button className="navigate-button">
+      <button className="navigate-button" onClick={onClick}>
         <div className="container-image">
           <svg
             xmlns="http://www.w3.org/2000/svg"

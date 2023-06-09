@@ -1,17 +1,26 @@
-import React from "react";
+import { createRef } from "react";
 
-export const SendMessage = () => {
+interface Props {
+  sendReplay: (text: string)=> void;
+}
+
+export const MessageForm = (props: Props) => {
+  const messageRef = createRef< HTMLTextAreaElement>();
+  const {sendReplay} = props;
+
+  const handleOnClick = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) =>{
+    sendReplay(messageRef?.current?.value || '');
+  }
   return (
     <div className="send-message-layout">
       <textarea
-        name=""
-        id=""
+        ref={messageRef}
         cols={30}
         rows={10}
         className="textarea"
         placeholder="Your replay to be sent"
       ></textarea>
-      <button className="send-button">
+      <button className="send-button" onClick={handleOnClick}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
